@@ -5,32 +5,27 @@ on:
     branches:
       - main
 
+env:
+  APP_NAME: my-awesome-app
+  VERSION: 1.0.0
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Build karo
-        run: echo "Code build ho raha hai..."
-
-      - name: Build complete
-        run: echo "Build complete!"
+        run: echo "Building $APP_NAME version $VERSION"
 
   test:
     runs-on: ubuntu-latest
     needs: build
     steps:
       - name: Test karo
-        run: echo "Tests chal rahe hain..."
-
-      - name: Test complete
-        run: echo "Sab tests pass ho gaye!"
+        run: echo "Testing $APP_NAME version $VERSION"
 
   deploy:
     runs-on: ubuntu-latest
     needs: test
     steps:
       - name: Deploy karo
-        run: echo "Deploying..."
-
-      - name: Deploy complete
-        run: echo "Application deploy ho gayi!"
+        run: echo "Deploying $APP_NAME version $VERSION"

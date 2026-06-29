@@ -1,4 +1,4 @@
-name: My First Workflow
+name: Multi Job Workflow
 
 on:
   push:
@@ -6,11 +6,31 @@ on:
       - main
 
 jobs:
-  hello:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Hello World
-        run: echo "Hello from GitHub Actions!"
+      - name: Build karo
+        run: echo "Code build ho raha hai..."
 
-      - name: Mera Naam
-        run: echo "Ye Ramzan ka pehla workflow hai!"
+      - name: Build complete
+        run: echo "Build complete!"
+
+  test:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Test karo
+        run: echo "Tests chal rahe hain..."
+
+      - name: Test complete
+        run: echo "Sab tests pass ho gaye!"
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Deploy karo
+        run: echo "Deploying..."
+
+      - name: Deploy complete
+        run: echo "Application deploy ho gayi!"

@@ -29,3 +29,6 @@ jobs:
     steps:
       - name: Deploy karo
         run: echo "Deploying $APP_NAME version $VERSION"
+
+      - name: Secret use karo
+        run: echo "Password hai ${{ secrets.MY_PASSWORD }}"
